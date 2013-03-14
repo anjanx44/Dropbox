@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1327528326 source:c:\users\shiam\desktop\sgipc\prime factor\main.cpp
+	<stdio.h>
+	<string.h>
+	<math.h>
+	<ctype.h>
+	<iostream>
+	<string>
+	<map>
+	<vector>
+	<set>
+	<queue>
+	<stack>
+	<list>
+	<algorithm>
+

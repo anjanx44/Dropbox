@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1329909322 source:e:\kruskal\main.cpp
+	<iostream>
+	"cstdio"
+	"algorithm"
+	"cstring"
+	"vector"
+
+1330473396 source:d:\study\2nd year\semister_22\2-2\algorithm\algorithm lab\kruskal\main.cpp
+	<iostream>
+	"cstdio"
+	"algorithm"
+	"cstring"
+	"vector"
+

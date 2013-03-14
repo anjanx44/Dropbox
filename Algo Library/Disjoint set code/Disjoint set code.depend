@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1334168275 source:c:\users\shiam\desktop\sgipc\disjoint set code\main.cpp
+	<cstdio>
+	<cstring>
+	<cstdlib>
+	<cctype>
+	<cmath>
+	<iostream>
+	<utility>
+	<fstream>
+	<numeric>
+	<string>
+	<vector>
+	<queue>
+	<map>
+	<algorithm>
+	<set>
+	<sstream>
+	<stack>
+	<list>
+	<iterator>
+	<bitset>
+
