@@ -5,7 +5,6 @@ UVa : 136 - Ugly Number
 
 #include <iostream>
 #include<stdio.h>
-//#include<iostream.h>
 #include<string.h>
 #include<math.h>
 #include<ctype.h>
