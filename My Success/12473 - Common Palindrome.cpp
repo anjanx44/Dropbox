@@ -67,31 +67,56 @@ typedef unsigned long long ui64;
 #define READ(f) freopen(f, "r", stdin)
 #define WRITE(f) freopen(f, "w", stdout)
 
-string A,B,findLcs;
+string A,B;
+int dp[60][60][60][60];
+/*
+int call(int al,int ar,int bl,int br){
+    if( al>ar || bl>br )
+        return 0;
+    if(al == ar && bl == br){
+        if(A[al]==B[bl] and A[ar]==B[br] and A[al]==A[ar] and B[bl]==B[br]){
+           return 1;
+        } else if(al == ar || bl == br){
+            return 0;
+        }
+    }
+    if(A[al]==B[bl] and A[ar]==B[br] and A[al]==A[ar] and B[bl]==B[br])
+        return 2 + call(al+1,ar-1,bl+1,br-1);
 
-int dp[60][60];
+    if(dp[al][ar][bl][br]!=-1)
+        return dp[al][ar][bl][br];
 
-int len(int l,int r)
-{
-    if(l>r) return 0;
-    if(l==r) return 1;
-    if(dp[l][r]) return dp[l][r];
-    if(findLcs[l]==findLcs[r])
-        dp[l][r] = 2 + len(l+1,r-1);
-    else
-        dp[l][r] = max(len(l+1,r),len(l,r-1));
-    return dp[l][r];
+    int p = max(call(al+1,ar,bl,br),max(call(al,ar-1,bl,br),max(call(al,ar,bl+1,br),call(al,ar,bl,br-1))));
+    int q = max(call(al+1,ar,bl+1,br),max(call(al,ar-1,bl,br-1),max(call(al,ar-1,bl+1,br),call(al+1,ar,bl,br-1))));
+    int r = max(call(al+1,ar-1,bl+1,br),max(call(al+1,ar-1,bl,br-1),max(call(al,ar-1,bl+1,br-1),call(al+1,ar,bl+1,br-1))));
+    return dp[al][ar][bl][br] = max(p,max(q,r));
 }
+*/
 
-void P_LCS(int i,int j){
-    if(i==0 || j==0) return;
-    if(A[i-1] == B[j-1]){
-        P_LCS(i-1,j-1);
-        findLcs.push_back(A[i-1]); pf("%c",A[i-1]);
-    }else if(dp[i-1][j] > dp[i][j-1]){
-    	P_LCS(i-1,j);
-    }else
-        P_LCS(i,j-1);
+int call(int al,int ar,int bl,int br) {
+    if( al>ar || bl>br )
+        return 0;
+
+    if(dp[al][ar][bl][br]!=-1)
+        return dp[al][ar][bl][br];
+
+    if(al == ar || bl == br) {
+        if(A[al]==B[bl] and A[ar]==B[br] and A[al]==A[ar] and B[bl]==B[br]) {
+            return 1;
+        } else if(al == ar and bl!=br) {
+            return dp[al][ar][bl][br] = max(call(al,ar,bl+1,br),call(al,ar,bl,br-1)) ;
+        } else if(bl == br and al!=ar) {
+            return dp[al][ar][bl][br] = max(call(al+1,ar,bl,br),call(al,ar-1,bl,br)) ;
+        } else {
+            return 0;
+        }
+    }
+    if(A[al]==B[bl] and A[ar]==B[br] and A[al]==A[ar] and B[bl]==B[br])
+        return 2 + call(al+1,ar-1,bl+1,br-1);
+
+    int p = max(call(al+1,ar,bl,br),max(call(al,ar-1,bl,br),max(call(al,ar,bl+1,br),call(al,ar,bl,br-1))));
+    return dp[al][ar][bl][br] = p;
+
 }
 
 int main() {
@@ -100,18 +125,9 @@ int main() {
     cin>>tc;
     while(tc--) {
         pf("Case %d: ",cas++);
+        memdp(dp);
         cin>>A>>B;
-        memca(dp);
-        repl(i,A.size()) repl(j,B.size()) {
-            if(A[i-1] == B[j-1])
-                dp[i][j] = dp[i-1][j-1] + 1;
-            else
-                dp[i][j] = max(dp[i-1][j],dp[i][j-1]);
-        }
-        findLcs.clear();
-        P_LCS(A.size(),B.size());puts("");
-        memca(dp);
-        int ans = len(0,findLcs.size()-1);
+        int ans = call(0,A.size()-1,0,B.size()-1);
         pf("%d\n",ans);
     }
     return 0;
