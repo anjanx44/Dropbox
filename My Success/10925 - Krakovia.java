@@ -1,3 +1,9 @@
+/*
+http://codingaquarium.wordpress.com/
+Shaikh shiam Rahman
+Khunla University of Engineering and Technology(KUET)
+UVa - 10925 - Krakovia
+*/
 import java.io.*;
 import java.util.*;
 import java.math.*;

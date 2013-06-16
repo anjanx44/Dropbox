@@ -1,4 +1,9 @@
-//UVa_10519
+/*
+http://codingaquarium.wordpress.com/
+Shaikh shiam Rahman
+Khunla University of Engineering and Technology(KUET)
+UVa - 10519 - Really Strange
+*/
 import java.math.BigInteger;
 import java.util.Scanner;
 class Main
