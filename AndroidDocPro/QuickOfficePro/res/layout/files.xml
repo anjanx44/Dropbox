@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF" >
+
+    <TextView
+        android:id="@+id/preview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:height="80dp"
+        android:hint="Empty File"
+        android:padding="5dp"
+        android:textColor="@drawable/preview_text"
+        android:textColorHint="#FF0000"
+        android:textSize="10sp" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/preview"
+        android:background="@drawable/tile_selector" >
+
+        <TextView
+            android:id="@+id/filename"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:textColor="@drawable/text"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+</RelativeLayout>
